@@ -31,10 +31,12 @@ https://reactjs.org/ gists, examples, demos, etc
 
    6. **Note**: When you’re ready to deploy to production, running npm run build will create an optimized build of your app in the build folder. You can learn more about Create React App from its README and the User Guide.
 
-2. Installing IDE
+##Developer Tools
+
+1. Installing IDE
    using VSC (**Visual Studio Code)**
 
-   1. install VSC’s extension [**Simple React Snippets**](https://marketplace.visualstudio.com/items?itemName=burkeholland.simple-react-snippets)
+2. 1. install VSC’s extension [**Simple React Snippets**](https://marketplace.visualstudio.com/items?itemName=burkeholland.simple-react-snippets)
    2. **OPTION:** install VSC’s extension [**Prettier - Code formatter**](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
       1. open VSC’s Code/Preferences/Settings and in search type “on save” and you will find “Code Actions On Save“, then open the suggested  option “Edit in settings.json”
          add the following entry in the json 
@@ -45,6 +47,14 @@ https://reactjs.org/ gists, examples, demos, etc
       2. There seems to be one other way to get the syntax highlighting working and you can learn more about it in the [Visual Studio Code docs](https://code.visualstudio.com/Docs/languages/javascript#_writing-jsconfigjson).
    4. VS Code supports JSX and React Native. You will get IntelliSense for React/JSX and React Native from automatically downloaded type declaration (typings) files from the [npmjs](https://www.npmjs.com/) type declaration file repository. Additionally, you can install the popular [**React Native extension**](https://marketplace.visualstudio.com/items?itemName=vsmobile.vscode-react-native) (**INSTALL IT!**) from the Marketplace.
    5. To enable ES6 import statements for React Native, you need to set the `allowSyntheticDefaultImports` compiler option to true. 
+
+3. The React Devtools extension for [**Chrome**](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) lets you inspect a React component tree with your browser’s developer tools.
+
+   1. so add the extension: https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en
+
+   2. The React DevTools let you check the props and the state of your React components.
+
+      After installing React DevTools, you can right-click on any element on the page, click “Inspect” to open the developer tools, and the React tab will appear as the last tab to the right.
 
 ## About
 
