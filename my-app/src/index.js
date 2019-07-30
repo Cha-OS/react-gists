@@ -17,20 +17,20 @@ function Square(props) {
 }
 
 class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true
-    };
-  }
+  finished = false;
+
+  state = {
+    squares: Array(9).fill(null),
+    xIsNext: true
+  };
 
   handleClick(i) {
     //we go here witth the immutability approach, by rewriting instead of mutating the state. This allows us several benefits with the most important one being able to use `React.PureComponent` instead of writing `shouldComponentUpdate()`:
-    const squares = this.state.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
+
+    if (this.finished || this.state.squares[i]) {
       return;
     }
+    const squares = this.state.squares.slice();
     squares[i] = this.state.xIsNext ? "X" : "O";
     this.setState({
       squares: squares,
@@ -52,6 +52,7 @@ class Board extends React.Component {
     let status;
     if (winner) {
       status = "Winner:" + winner;
+      this.finished = true;
     } else {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
