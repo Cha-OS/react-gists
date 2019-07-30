@@ -89,14 +89,14 @@ https://reactjs.org/ gists, examples, demos, etc
 2. https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 3. https://www.gistia.com/angular-progressive-web-app-native/
 
-##Angular to React
+## Angular to React
 1. https://dev.to/httpjunkie/angular-to-react-in-30-days-p5k
 2. https://medium.com/javascript-in-plain-english/react-to-angular-some-helpful-tips-for-making-the-transition-c8463619e374 
 3. https://www.toptal.com/react/why-did-i-switch-from-angularjs-to-react
 4. https://itnext.io/is-angular-dying-because-of-react-a8e885f09421
 5. https://buttercms.com/blog/migrating-from-angularjs-to-react
 
-##Using React Components in Angular
+## Using React Components in Angular
 1. https://github.com/ngReact/ngReact
 2. https://sdk.gooddata.com/gooddata-ui/docs/4.1.1/ht_use_react_component_in_angular_2.x.html
    3. https://github.com/gooddata/gooddata-react-components
