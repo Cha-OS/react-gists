@@ -101,3 +101,8 @@ https://reactjs.org/ gists, examples, demos, etc
 2. https://sdk.gooddata.com/gooddata-ui/docs/4.1.1/ht_use_react_component_in_angular_2.x.html
    3. https://github.com/gooddata/gooddata-react-components
 4. https://github.com/Cha-OS/ng2-redux
+
+## Testing
+
+1. https://medium.com/dailyjs/testing-react-an-overview-56204839cbad
+2. 
