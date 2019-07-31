@@ -17,49 +17,19 @@ function Square(props) {
 }
 
 class Board extends React.Component {
-  finished = false;
-
-  state = {
-    squares: Array(9).fill(null),
-    xIsNext: true
-  };
-
-  handleClick(i) {
-    //we go here witth the immutability approach, by rewriting instead of mutating the state. This allows us several benefits with the most important one being able to use `React.PureComponent` instead of writing `shouldComponentUpdate()`:
-
-    if (this.finished || this.state.squares[i]) {
-      return;
-    }
-    const squares = this.state.squares.slice();
-    squares[i] = this.state.xIsNext ? "X" : "O";
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext
-    });
-  }
-
   renderSquare(i) {
     return (
       <Square
-        value={this.state.squares[i]}
-        onClick={() => this.handleClick(i)}
+        value={this.props.squares[i]}
+        onClick={() => this.props.onClick(i)}
       />
     );
   }
 
   render() {
-    const winner = calculateWinner(this.state.squares);
-    let status;
-    if (winner) {
-      status = "Winner:" + winner;
-      this.finished = true;
-    } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-    }
-
     return (
       <div>
-        <div className="status">{status}</div>
+        {/* <div className="status">{status}</div> */}
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -81,14 +51,60 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+  finished = false;
+
+  state = {
+    history: [
+      {
+        squares: Array(9).fill(null)
+      }
+    ],
+    xIsNext: true
+  };
+
+  handleClick(i) {
+    const history = this.state.history;
+    const current = history[history.length - 1];
+
+    if (this.finished || current.squares[i]) {
+      return;
+    }
+
+    // why we copy the array with `slice()`? We go here witth the immutability approach, by overwriting instead of mutating the state.
+    // This allows us several benefits with the most important one being able to use `React.PureComponent` instead of writing `shouldComponentUpdate()`:
+    const squares = current.squares.slice();
+
+    squares[i] = this.state.xIsNext ? "X" : "O";
+    this.setState({
+      history: history.concat([
+        {
+          squares: squares
+        }
+      ]),
+      xIsNext: !this.state.xIsNext
+    });
+  }
+
   render() {
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const winner = calculateWinner(current.squares);
+
+    let status;
+    if (winner) {
+      this.finished = true;
+      status = "Winner: " + winner;
+    } else {
+      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+    }
+
     return (
       <div className="game">
         <div className="game-board">
-          <Board />
+          <Board squares={current.squares} onClick={i => this.handleClick(i)} />
         </div>
         <div className="game-info">
-          <div>{/* status */}</div>
+          <div>{status}</div>
           <ol>{/* TODO */}</ol>
         </div>
       </div>
