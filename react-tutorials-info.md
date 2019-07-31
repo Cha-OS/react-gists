@@ -6,6 +6,11 @@
 2. `render` returns a **React element**, which is a lightweight description of what to render. Most React developers use a special syntax called “**JSX**” which makes these structures easier to write.
 3. **JSX** comes with the full power of JavaScript. You can put *any* JavaScript expressions within **braces** inside JSX. Each React element is a JavaScript object that you can store in a variable or pass around in your program.
 4. All React component classes that have a `constructor` should start it with a `super(props)` call.
+5. To **render multiple items in React**, we can use an array of React elements.
+   1. but we need to add a key e.g. (`<li key={user.id}>`), otherwise we'll get an error:
+      **Warning**: Each child in an array or iterator should have a unique “key” prop. Check the render method of “Game”.
+   2. Keys do not need to be globally unique; they only need to be unique between components and their siblings.
+   3. **It’s strongly recommended that you assign proper keys whenever you build dynamic lists.** If you don’t have an appropriate key, you may want to consider restructuring your data so that you do.
 
 ## States
 
