@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import Button from "@material-ui/core/Button";
 
 function Square(props) {
   return (
@@ -154,13 +155,16 @@ class Game extends React.Component {
         <div className="game-info">
           <div>{status}</div>
           order:{" "}
-          <button
+          <Button
+            variant="contained"
+            color="primary"
             onClick={() =>
               this.setState({ historyOrder: -this.state.historyOrder })
             }
           >
+            {/* <i classname="material-icons">vertical_align_bottom</i> */}
             {this.state.historyOrder > 0 ? "V" : "^"}
-          </button>
+          </Button>
           <ol>{moves}</ol>
         </div>
       </div>
