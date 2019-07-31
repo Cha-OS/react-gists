@@ -53,4 +53,14 @@
       2. The component called `this.setState()`
    3. The component called `this.forceUpdate()`
 2. One of the core concepts of React is that a component's render output should be solely based on its props and state. So, if you want to use something for rendering, you should put it in state, and the correct way to do that is with `this.setState()`.
-3. 
+
+## Styling and CSS
+
+1. https://reactjs.org/docs/faq-styling.html
+
+2. The React documentation on [manipulating class names](https://facebook.github.io/react/docs/class-name-manipulation.html) suggests the [`classnames`](https://github.com/JedWatson/classnames) NPM package.
+   The docs for the package are great.
+
+   1. > If you often find yourself writing code like this, [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) package can simplify it.
+
+3. React can be used to power **animations**. See [React Transition Group](https://reactcommunity.org/react-transition-group/) and [React Motion](https://github.com/chenglou/react-motion), for example.
