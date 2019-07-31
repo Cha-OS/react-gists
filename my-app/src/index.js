@@ -63,7 +63,8 @@ class Game extends React.Component {
       }
     ],
     stepNumber: 0,
-    xIsNext: true
+    xIsNext: true,
+    historyOrder: 1
   };
 
   handleClick(i) {
@@ -133,6 +134,10 @@ class Game extends React.Component {
       );
     });
 
+    if (this.state.historyOrder < 0) {
+      moves.reverse();
+    }
+
     let status;
     if (winner) {
       this.finished = true;
@@ -148,6 +153,14 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
+          order:{" "}
+          <button
+            onClick={() =>
+              this.setState({ historyOrder: -this.state.historyOrder })
+            }
+          >
+            {this.state.historyOrder > 0 ? "V" : "^"}
+          </button>
           <ol>{moves}</ol>
         </div>
       </div>
