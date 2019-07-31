@@ -31,6 +31,7 @@
    2. Detecting Changes
    3. Determining When to Re-Render in React
       The main benefit of immutability is that it helps you build **pure components** in React. You can learn more about `shouldComponentUpdate()` and how you can build *pure components* by reading [**Optimizing Performance**](https://reactjs.org/docs/optimizing-performance.html#examples).
+      4. Unlike the array `push()` method you might be more familiar with, the `concat()` method doesn’t mutate the original array, so we prefer it.
 
 ## **Props**
 
