@@ -9,19 +9,18 @@ https://reactjs.org/ gists, examples, demos, etc
 1. Follow the [installation instructions for Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) to make a new project:
 
    1. cd ..../development
-
-   2. mkdir reactcd react
-
-   3. npx create-react-app tic-tac-toe
+2. mkdir react
+   3. cd react
+4. npx create-react-app tic-tac-toe
       this is the “Zero-Config Setup.
       (if you want to **customize** this configuration you can do “**npm run eject**”)
       It installs:
-
-      1. light Dev Server
-
-      2. Webpack
-
-      3. Babel, etc
+   
+   1. light Dev Server
+   
+   2. Webpack
+   
+   3. Babel, etc
 
 4)  cd tic-tac-toe
 

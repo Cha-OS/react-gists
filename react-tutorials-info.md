@@ -76,4 +76,11 @@
 
 ## React Material-UI
 1. https://material-ui.com/
-2. 
+
+## Forms
+
+1. https://reactjs.org/docs/forms.html
+2. https://redux-form.com/6.7.0/examples/material-ui/
+3. https://material-ui.com/components/text-fields/
+4. https://material-ui.com/api/form-control/
+5. https://itnext.io/keep-calm-and-handle-forms-in-react-js-52c67eea340e
