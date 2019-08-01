@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
 import NameForm from "./components/NameForm/NameForm.js";
+import EssayForm from "./components/EssayForm/EssayForm.js";
+import FlavorForm from "./components/FlavorForm/FlavorForm.js";
 
 function App() {
   return (
@@ -8,6 +10,8 @@ function App() {
       <header className="App-header">React Forms Gist</header>
 
       <NameForm />
+      <EssayForm />
+      <FlavorForm />
     </div>
   );
 }

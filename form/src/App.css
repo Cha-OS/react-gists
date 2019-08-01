@@ -31,3 +31,10 @@
     transform: rotate(360deg);
   }
 }
+
+.bordered {
+  border: 1pt black solid;
+  margin: 10px;
+  padding: 20px;
+  background-color: lightcoral;
+}

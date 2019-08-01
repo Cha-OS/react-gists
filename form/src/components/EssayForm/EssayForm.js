@@ -1,24 +1,24 @@
 import React from "react";
-import "./NameForm.css";
 import "../Form.css";
 
-export default class NameForm extends React.Component {
+export default class EssayForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = {
+      value: "Please write an essay about your favorite DOM element."
+    };
 
-    //added to simplify later binding so that we can write `onChange={this.handleChange}` instead of `onChange={this.handleChange.bind(this)}`:
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value.toUpperCase() });
+    this.setState({ value: event.target.value });
   }
 
   handleSubmit(event) {
     console.log("state", this.state);
-    alert("A name was submitted: " + this.state.value);
+    alert("An essay was submitted: " + this.state.value);
     event.preventDefault();
   }
 
@@ -26,12 +26,8 @@ export default class NameForm extends React.Component {
     return (
       <form className="bordered" onSubmit={this.handleSubmit}>
         <label>
-          Name:
-          <input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
+          Essay:
+          <textarea value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>

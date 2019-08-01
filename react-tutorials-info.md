@@ -84,3 +84,6 @@
 3. https://material-ui.com/components/text-fields/
 4. https://material-ui.com/api/form-control/
 5. https://itnext.io/keep-calm-and-handle-forms-in-react-js-52c67eea340e
+6. **Controlled Components**
+   1. In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with [`setState()`](https://reactjs.org/docs/react-component.html#setstate).
+   2. We can combine the two by making the React state be the “single source of truth”. Then the React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a “controlled component”.
