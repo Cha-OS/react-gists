@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
 
 function Square(props) {
   return (
@@ -143,6 +144,9 @@ class Game extends React.Component {
     if (winner) {
       this.finished = true;
       status = "Winner: " + winner;
+    } else if (this.state.stepNumber === 9) {
+      this.finished = true;
+      status = "No Winner - Draw";
     } else {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
@@ -163,6 +167,11 @@ class Game extends React.Component {
             }
           >
             {/* <i classname="material-icons">vertical_align_bottom</i> */}
+            <Icon className="icon" color="primary">
+              {this.state.historyOrder > 0
+                ? "vertical_align_bottom"
+                : "vertical_align_top"}
+            </Icon>
             {this.state.historyOrder > 0 ? "V" : "^"}
           </Button>
           <ol>{moves}</ol>
