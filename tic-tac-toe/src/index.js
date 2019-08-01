@@ -5,13 +5,17 @@ import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 
 function Square(props) {
+  let className = "square";
+  if (props.lastPlayed) {
+    className += " highlighted";
+  }
   return (
     <button
-      className="square"
       onClick={() => {
         props.onClick();
         console.log("Square " + props.value + " clicked"); //will display the old valuse (probably because it is updates only when rendered! )
       }}
+      className={className}
     >
       {props.value}
     </button>
@@ -25,6 +29,7 @@ class Board extends React.Component {
         key={i}
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)}
+        lastPlayed={this.props.lastMove === i}
       />
     );
   }
@@ -154,7 +159,11 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
-          <Board squares={current.squares} onClick={i => this.handleClick(i)} />
+          <Board
+            squares={current.squares}
+            onClick={i => this.handleClick(i)}
+            lastMove={current.lastMove}
+          />
         </div>
         <div className="game-info">
           <div>{status}</div>

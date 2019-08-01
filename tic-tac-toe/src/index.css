@@ -79,3 +79,7 @@ ul {
 .icon {
   margin: 2;
 }
+
+.highlighted {
+  background-color: yellow;
+}
