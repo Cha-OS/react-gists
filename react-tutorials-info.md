@@ -24,6 +24,7 @@
 1. To “remember” things, components use **state**. React components can have state by setting `this.state` in their constructors. `this.state` should be considered as private to a React component that it’s defined in.
 2. **NEVER** mutate this.state directly (this.state = X), as calling setState() afterwards may replace the mutation you made. Treat this.state as if it were immutable."
 3. https://medium.com/react-ecosystem/how-to-handle-state-in-react-6f2d3cd73a0c
+4. since `setState()` automatically [merges a partial state into the current state](https://reactjs.org/docs/state-and-lifecycle.html#state-updates-are-merged), we only needed to call it with the changed parts. The merging is **shallow**.
 
 ### **Lifting state into a parent component**
 
@@ -87,3 +88,21 @@
 6. **Controlled Components**
    1. In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with [`setState()`](https://reactjs.org/docs/react-component.html#setstate).
    2. We can combine the two by making the React state be the “single source of truth”. Then the React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a “controlled component”.
+   3. When you need to handle **multiple controlled `input` elements**, you can add a `name` attribute to each element and let the handler function choose what to do based on the value of `event.target.name`.
+7. **Uncontrolled Components**
+   1. form elements whose values are read-only (e.g. `<input type="file" />`) are  **uncontrolled components** in React. They are discussed together with other uncontrolled components in https://reactjs.org/docs/uncontrolled-components.html
+   2. **It can sometimes be tedious to use controlled components, because you need to write an event handler for every way your data can change** and pipe all of the input state through a React component. This can become particularly annoying when you are converting a preexisting codebase to React, or integrating a React application with a non-React library. In these situations, you might want to check out [uncontrolled components](https://reactjs.org/docs/uncontrolled-components.html), an alternative technique for implementing input forms.
+8. **Fully-Fledged Solutions**
+   1. If you’re looking for a complete solution including **validation**, **keeping track of the visited fields**, and **handling form submission**, [**Formik**](https://jaredpalmer.com/formik) is one of the popular choices. However, it is built on the same principles of controlled components and managing state — so don’t neglect to learn them.
+## Flux. Redux. Relay
+1. https://www.sitepoint.com/getting-started-with-react-graphql-and-relay-part-1-of-2/
+2. https://www.quora.com/How-do-React-Flux-GraphQL-and-Relay-work-together
+
+## Data Fetching
+
+1. https://reactjs.org/community/data-fetching.html
+
+## Testing
+
+1. https://www.fullstackreact.com/30-days-of-react/day-22/
+2. 
