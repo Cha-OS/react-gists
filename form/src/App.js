@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import NameForm from "./NameForm.js";
+import NameForm from "./components/NameForm/NameForm.js";
 
 function App() {
   return (

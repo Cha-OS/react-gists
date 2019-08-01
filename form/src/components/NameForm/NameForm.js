@@ -1,4 +1,5 @@
 import React from "react";
+import "./NameForm.css";
 
 export default class NameForm extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ export default class NameForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="bordered" onSubmit={this.handleSubmit}>
         <label>
           Name:
           <input
