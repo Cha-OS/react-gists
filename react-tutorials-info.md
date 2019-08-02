@@ -96,7 +96,14 @@
    1. If you’re looking for a complete solution including **validation**, **keeping track of the visited fields**, and **handling form submission**, [**Formik**](https://jaredpalmer.com/formik) is one of the popular choices. However, it is built on the same principles of controlled components and managing state — so don’t neglect to learn them.
 ## Flux. Redux. Relay
 1. https://www.sitepoint.com/getting-started-with-react-graphql-and-relay-part-1-of-2/
+
 2. https://www.quora.com/How-do-React-Flux-GraphQL-and-Relay-work-together
+
+### Redux
+
+1. ![Screen Shot 2019-08-01 at 11.58.39 PM](/Users/SR/Documents/data/development/react/react-gists/redux-diagram.png)
+2. always be careful to **not accidentally mutate the original state** while working with redux app. Because in case you mutate state, store’s state may get updated but react will not detect it and you would not be able to witness changes in your react app. FYI 90% of errors in any redux app happens due to mutated state.
+3. 
 
 ## Data Fetching
 
