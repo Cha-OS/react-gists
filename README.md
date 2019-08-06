@@ -109,27 +109,12 @@ https://reactjs.org/ gists, examples, demos, etc
 1. https://www.fullstackreact.com/30-days-of-react/day-22/
 2. https://medium.com/dailyjs/testing-react-an-overview-56204839cbad
 3. https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2019-264e19514d0a
+4. https://raygun.com/blog/javascript-unit-testing-frameworks/
+5. https://kentcdodds.com/blog/write-tests
 
-### Testing React — an overview
 
-https://medium.com/dailyjs/testing-react-an-overview-56204839cbad
 
-1. **The seven principles of software testing**
+## Prop-drilling
 
-   1. **Testing shows the presence of defects**Testing can only assure you have bugs in your application, it can’t prove your application is error-free.
-   2. **Exhaustive testing is impossible**You can’t cover each possible scenario, focus on the most important aspects to test.
-   3. **Early testing**The sooner you start testing during an iteration or in your whole project lifetime the better you can direct your development flow. Earlier found bugs are cheaper to fix than those found later.
-   4. **Defect clustering**Most of the reported defects will occur in clustered regions within your code e.g. 80% of the problems are found in 20% of the modules.
-   5. **The pesticide paradox**Running the same tests over time will not detect new defects in your application. As your applications evolve your tests need to evolve too
-   6. **Testing is context dependent**Testing can happen with different focus depending on your application. A medical application needs to be flawless whereby a professional website has to be performant
-   7. **The absence of errors fallacy**Related to the first principle the absence of errors does not mean there are no errors that will occur in a shipped version
-
-2. there a three separate levels of testing: **Unit**, **Integration,** and **End to End(E2E)** tests.
-
-   1. The difference between those kinds of tests is mainly <u>the amount of code that is covered by a single test</u>. While you focus on the validity of a single component or function in a **unit test**. You want to ensure the manner of function between certain components/function in an **integration test** till you test a certain behavior of your system while imitating the actions a possible user may trigger in your system with an **E2E test**.
-
-3. ## Distribution of your effort to test the different levels
-
-   You may know the **testing pyramid**? Its shape defines the number of tests that should be written. As you are moving up on the pyramid the tests are getting larger and less frequent. Developers at Google suggest 70/20/10 distribution, 70% unit test, 20% integration and 10% end-to-end test.
-
-   ![img](https://miro.medium.com/max/1400/0*8Uapgla-XhuHS6ph.png)testing pyramid from [Kent C. Dodds](https://medium.com/u/db72389e89d8?source=post_page---------------------------)’ slides
+1. https://kentcdodds.com/blog/prop-drilling
+   1. Use [**React's Context API**](https://kentcdodds.com/blog/how-to-use-react-context-effectively) for things that are truly necessary deep in the react tree. They don't have to be things you need *everywhere* in the application (you can render a provider anywhere in the app). This can really help avoid some issues with prop drilling. It's been noted that context is kinda taking us back to the days of **global variables**. The difference is that because of the way the API was designed, you can still statically find the source of the context as well as any consumers with relative ease.

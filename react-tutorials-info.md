@@ -94,7 +94,7 @@
    2. **It can sometimes be tedious to use controlled components, because you need to write an event handler for every way your data can change** and pipe all of the input state through a React component. This can become particularly annoying when you are converting a preexisting codebase to React, or integrating a React application with a non-React library. In these situations, you might want to check out [uncontrolled components](https://reactjs.org/docs/uncontrolled-components.html), an alternative technique for implementing input forms.
 8. **Fully-Fledged Solutions**
    1. If you’re looking for a complete solution including **validation**, **keeping track of the visited fields**, and **handling form submission**, [**Formik**](https://jaredpalmer.com/formik) is one of the popular choices. However, it is built on the same principles of controlled components and managing state — so don’t neglect to learn them.
-## Flux. Redux. Relay
+## State Management. Flux. Redux. Relay
 1. https://www.sitepoint.com/getting-started-with-react-graphql-and-relay-part-1-of-2/
 
 2. https://www.quora.com/How-do-React-Flux-GraphQL-and-Relay-work-together
@@ -103,7 +103,14 @@
 
 1. ![Screen Shot 2019-08-01 at 11.58.39 PM](/Users/SR/Documents/data/development/react/react-gists/redux-diagram.png)
 2. always be careful to **not accidentally mutate the original state** while working with redux app. Because in case you mutate state, store’s state may get updated but react will not detect it and you would not be able to witness changes in your react app. FYI 90% of errors in any redux app happens due to mutated state.
-3. 
+
+### Thoughts on State management
+
+1. **STATE MANAGEMENT**
+   For state management, I stick to redux because it has the largest community and support, as well as it has been around for as long state management libraries have been around. This provides many benefits.
+   Another library used in state management that has gained a lot of popularity is Apollo. I’ve personally used Apollo more for making requests to my graphql API, and have used it very little for state management.
+   The React context API has also been gaining traction as it has improved its functionality in the latest versions of react. **REDUX** uses the react.context API behind the scenes, so yea.
+2. 
 
 ## Data Fetching
 
@@ -112,4 +119,34 @@
 ## Testing
 
 1. https://www.fullstackreact.com/30-days-of-react/day-22/
-2. 
+
+### Testing React — an overview
+
+https://medium.com/dailyjs/testing-react-an-overview-56204839cbad
+
+1. **The seven principles of software testing**
+   1. **Testing shows the presence of defects**Testing can only assure you have bugs in your application, it can’t prove your application is error-free.
+   2. **Exhaustive testing is impossible**You can’t cover each possible scenario, focus on the most important aspects to test.
+   3. **Early testing**The sooner you start testing during an iteration or in your whole project lifetime the better you can direct your development flow. Earlier found bugs are cheaper to fix than those found later.
+   4. **Defect clustering**Most of the reported defects will occur in clustered regions within your code e.g. 80% of the problems are found in 20% of the modules.
+   5. **The pesticide paradox**Running the same tests over time will not detect new defects in your application. As your applications evolve your tests need to evolve too
+   6. **Testing is context dependent**Testing can happen with different focus depending on your application. A medical application needs to be flawless whereby a professional website has to be performant
+   7. **The absence of errors fallacy**Related to the first principle the absence of errors does not mean there are no errors that will occur in a shipped version
+2. there a three separate levels of testing: **Unit**, **Integration,** and **End to End(E2E)** tests.
+   1. The difference between those kinds of tests is mainly <u>the amount of code that is covered by a single test</u>. While you focus on the validity of a single component or function in a **unit test**. You want to ensure the manner of function between certain components/function in an **integration test** till you test a certain behavior of your system while imitating the actions a possible user may trigger in your system with an **E2E test**.
+   2. **Distribution of your effort to test the different levels**
+      You may know the **testing pyramid**? Its shape defines the number of tests that should be written. As you are moving up on the pyramid the tests are getting larger and less frequent. Developers at Google suggest 70/20/10 distribution, 70% unit test, 20% integration and 10% end-to-end test.
+      ![img](https://miro.medium.com/max/1400/0*8Uapgla-XhuHS6ph.png)
+      testing pyramid from [Kent C. Dodds](https://medium.com/u/db72389e89d8?source=post_page---------------------------)’ slides
+   3. **Snapshots**
+      Another neat feature **Jest** provides is the possibility to snapshot a certain state of your application. During each test run your previous snapshot will be compared with the current snapshot. If a difference occurs the snapshot test will fail. Snapshot tests are useful if you do not want your UI or certain function results to change unexpectedly.
+   4. The tools you use for **integration testing** are the same as you use for Unit testing. The difference starts when you decide on what to render and test. In general, the best thing to do when writing integration tests is **to stop mocking** other components or functions. Also, <u>render every component which is defined on a global level</u> throughout your application, e.g. react-router or redux. If one of your components uses one of those libraries, eventually it would call a function of those libraries during execution. In this case, you want to validate whether the integration works out as planned.
+   5. **Mocking server communication**
+      So in general with an integration test, you literally test the integration between certain components within your frontend. Also, you want to be sure to mock all requests to a possible backend or third party with the expected output the request would result with.
+
+## Hierarchy. Structuring
+
+1. **Use Presentational and Container component pattern**
+   1. **Presentational components** are those who don’t have internal state. Their role is to show certain pieces of UI. They are provided data via props or context api.
+   2. **Container components** are those which deals with business logic. They usually have some state and only render presentational components based on the logic.
+   3. This way Presentational and Container components complete the puzzle together. By dividing the responsibilities, code becomes easier to maintain and debug.
