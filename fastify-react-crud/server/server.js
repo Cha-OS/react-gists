@@ -23,7 +23,7 @@ mongoose
 //handles GET / request
 fastify.get("/", async (request, reply) => {
   try {
-    return { message: "hello, world!" };
+    reply.sendFile("index.html");
   } catch (e) {
     console.log(e);
   }
@@ -46,3 +46,8 @@ fastify.listen(process.env.PORT || 3000, "0.0.0.0", err => {
 //   w: "majority",
 //   wtimeout: 4000
 // });
+
+const DistPath = path.join(__dirname, "..", "dist");
+fastify.register(require("fastify-static"), {
+  root: DistPath
+});

@@ -3,8 +3,14 @@ import MenuItem from "./components/menuItem";
 import Form from "./components/form";
 import "./menu.css";
 import { connect } from "react-redux";
-import { createItem, deleteItem, updateItem } from "./redux/actions/actions";
+import {
+  createItem,
+  deleteItem,
+  updateItem,
+  readItems
+} from "./redux/actions/actions";
 import uuid from "uuid";
+import axios from "axios";
 
 //main component that wraps major part of application
 class Menu extends Component {
@@ -16,6 +22,10 @@ class Menu extends Component {
   //function to trigger form rendering
   handleAddClick = () => this.setState({ openAddForm: true });
 
+  componentDidMount() {
+    this.props.readItems();
+  }
+
   //function to handle item addition
   handleAddItem = ({ name, price }) => {
     if (name == "") name = "untitled";
@@ -26,15 +36,41 @@ class Menu extends Component {
       name,
       price
     };
+
+    axios
+      .post("/api/menuItems", { ...newItem })
+      .then(({ data: { name } }) => {
+        console.log(`Item - ${name} added successfully`);
+      })
+      .catch(e => console.log("Addition failed , Error ", e));
+
     this.props.createItem(newItem);
     this.handleCancel();
   };
 
   //function to handle item deletion
-  handleDeleteItem = id => this.props.deleteItem(id);
+  handleDeleteItem = id => {
+    axios
+      .delete(`/api/menuItems/${id}`)
+      .then(({ data: { name } }) => {
+        console.log(`Item - ${name} deleted successfully`);
+      })
+      .catch(e => console.log("Deletion failed, Error ", e));
+
+    this.props.deleteItem(id);
+  };
 
   //function to handle item updates
-  handleUpdateItem = item => this.props.updateItem(item);
+  handleUpdateItem = item => {
+    axios
+      .put(`/api/menuItems/${item.id}`, { item })
+      .then(({ data }) => {
+        console.log(`Item - ${data.name} updated successfully`);
+      })
+      .catch(e => console.log("Updation failed, Error ", e));
+
+    this.props.updateItem(item);
+  };
 
   //function to unmount form component or in short close it
   handleCancel = () => this.setState({ openAddForm: false });
@@ -99,5 +135,5 @@ const mapStateToProps = ({ menuItems }) => ({
 //connecting our main component to redux store
 export default connect(
   mapStateToProps,
-  { createItem, deleteItem, updateItem }
+  { createItem, deleteItem, updateItem, readItems }
 )(Menu);
