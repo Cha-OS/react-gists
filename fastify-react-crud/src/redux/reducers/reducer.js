@@ -56,7 +56,8 @@ export default function(state = initialState, action) {
         loading: false,
         menuItems: action.payload.items
       };
-      FETCH_ITEMS_FAILURE: return {
+    case FETCH_ITEMS_FAILURE:
+      return {
         ...state,
         loading: false,
         errors: action.payload.errors,
