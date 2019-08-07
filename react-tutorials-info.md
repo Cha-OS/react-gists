@@ -110,7 +110,8 @@
    For state management, I stick to redux because it has the largest community and support, as well as it has been around for as long state management libraries have been around. This provides many benefits.
    Another library used in state management that has gained a lot of popularity is Apollo. I’ve personally used Apollo more for making requests to my graphql API, and have used it very little for state management.
    The React context API has also been gaining traction as it has improved its functionality in the latest versions of react. **REDUX** uses the react.context API behind the scenes, so yea.
-2. 
+2. 1. **ERROR “redux action “is not a function” when dispatched from component”**
+      **Solution**:/* **WARNING**! We have to import component `FlowersGrid` as DEFAULT export (even though we have exported it as a named one) / in order Redux to work; in order to import the redux `connect` that was exported as a default export in the same file: (more about it at https://stackoverflow.com/a/53500452/4742336 */
 
 ## Data Fetching
 
